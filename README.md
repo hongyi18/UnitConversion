@@ -30,3 +30,9 @@ Please follow the Mathematica notebook [Get started on UnitConversion.nb](https:
 - `UC[quantity]`: Automatically simplify the quantity.
 - `UC[quantity, targetunit]`: Express the quantity with the target unit.
 - `SetNaturalUnit[DefiningConstants->{c==1, GN==1}, PreferredUnits->{km}]`: Use the natural system with the defining constant $c=G_\mathrm{N}=1$ (geometrized units), with the preferred unit $\mathrm{km}$.
+
+## Basic info
+The values of constants are taken based on reviews by Particle Data Group, [Physical Constants](https://pdg.lbl.gov/2024/reviews/rpp2024-rev-phys-constants.pdf) and [Astrophysical Constants and Parameters](https://pdg.lbl.gov/2024/reviews/rpp2024-rev-astrophysical-constants.pdf), and the wikipedia page [International System of Units](https://en.wikipedia.org/wiki/International_System_of_Units).
+
+## Contact
+If you find any bugs or would like to make suggestions for its improvement, please contact me via the email address displayed on [my website](https://hongyi18.github.io/).
