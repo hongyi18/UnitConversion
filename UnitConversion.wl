@@ -276,6 +276,7 @@ Begin["`Private`"];
 
 
 (* Set the natural unit system. *)
+$Assumptions = And@@Thread[Join[$BaseUnits, Keys[$Units]]>0];
 $DefiningConstants = {c==1, \[HBar]==1, \[Epsilon]0==1, kB==1}; (* Default natural system. *)
 $PreferredUnits = {eV}; (* Default preferred units for outputs. *)
 
