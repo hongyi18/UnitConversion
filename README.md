@@ -34,7 +34,7 @@ Please follow the Mathematica notebook [Get started on UnitConversion.nb](https:
 ## Basic info about the package
 The values of constants are taken based on reviews by Particle Data Group, [Physical Constants](https://pdg.lbl.gov/2024/reviews/rpp2024-rev-phys-constants.pdf) and [Astrophysical Constants and Parameters](https://pdg.lbl.gov/2024/reviews/rpp2024-rev-astrophysical-constants.pdf), and the wikipedia page [International System of Units](https://en.wikipedia.org/wiki/International_System_of_Units).
 
-The current list of named units incorporates the SI base units $\{\mathrm{s}, \mathrm{m}, \mathrm{kg}, \mathrm{A}, \mathrm{K}\}$, their derived units, and some useful constants in physics and cosmology. The other two SI base units $\{\mathrm{mol}, \mathrm{cd}\}$ and their derived units are not included for now.
+The current list of named units incorporates the SI base units {$\mathrm{s}, \mathrm{m}, \mathrm{kg}, \mathrm{A}, \mathrm{K}$}, their derived units, and some useful constants in physics and cosmology. The other two SI base units {$\mathrm{mol}, \mathrm{cd}$} and their derived units are not included for now.
 
 ## Contact
 If you find any bugs or would like to make suggestions for its improvement, please contact me via the email address displayed on [my website](https://hongyi18.github.io/).
