@@ -332,7 +332,7 @@ UC[x_] :=
 Block[{yList, idx},
 	If[Head[$PreferredUnitsInternal]===List && Length@$PreferredUnitsInternal>=1,
 		(* If preferred units are given, try taking the best-matching unit. *)
-		yList = Map[Function[unit, x/unit //.$UnitReplace//N], $PreferredUnitsInternal];
+		yList = Map[Function[unit, x/unit //.$UnitReplace//N], $PreferredUnitsInternal] //Quiet;
 		idx = FirstPosition[NumericQ/@yList, True][[1]];
 		If[IntegerQ[idx], UC[x, $PreferredUnitsInternal[[idx]]], x/.$UnitReplace//N],
 		
