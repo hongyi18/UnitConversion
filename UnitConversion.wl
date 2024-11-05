@@ -316,6 +316,7 @@ Protect[UnitList];
 
 
 Unprotect[UC];
+SetAttributes[UC, Listable];
 UC[x_, unit_] := 
 Block[{y, unit1},
 	y = x/unit //.$UnitReplace//SimplifyUnit//N;
