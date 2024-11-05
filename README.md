@@ -17,7 +17,7 @@ To load the package, simply run
 <<UnitConversion`
 ```
 
-**Note:** If the installation/update fails, please check your internet connection by following the guide [Troubleshooting Internet Connectivity Problems](https://reference.wolfram.com/language/tutorial/TroubleshootingInternetConnectivity.html).
+**Note:** If the installation/update fails, please try again or check your internet connection by following the guide [Troubleshooting Internet Connectivity Problems](https://reference.wolfram.com/language/tutorial/TroubleshootingInternetConnectivity.html).
 
 ## Tutorial
 Please follow the Mathematica notebook [Get started on UnitConversion.nb](https://github.com/hongyi18/UnitConversion/blob/main/Get%20started%20on%20UnitConversion.nb) for a 3-minute tutorial.
@@ -26,13 +26,13 @@ Please follow the Mathematica notebook [Get started on UnitConversion.nb](https:
 - `Join[$BaseUnits, Keys@$Units]`: Print the full list of the symbols of named units.
 - `?H0`: Check if the unit symbol `H0` is supported; the meaning of the symbol will be printed if it is supported.
 - `UnitList[]`: Print the full list of named units and their meanings.
-- `NaturalUnitInfo[]`: Information about the current natural unit system and the preferred units (which will be preferably used in outputs if no target unit is given).
-- `UC[quantity]`: Automatically simplify the quantity.
-- `UC[quantity, targetunit]`: Express the quantity with the target unit.
-- `SetNaturalUnit[DefiningConstants->{c==1, GN==1}, PreferredUnits->{km}]`: Use the natural system with the defining constant $c=G_\mathrm{N}=1$ (geometrized units), with the preferred unit $\mathrm{km}$.
+- `NaturalUnitInfo[]`: Information about the current natural unit system.
+- `UC[quantity]`: Automatically simplify the quantity in terms of the SI base units.
+- `UC[quantity, targetunit]`: Convert the quantity in terms of the target unit.
+- `SetNaturalUnit[DefiningConstants->{c==1, GN==1}]`: Use the natural system with the defining constant $c=G_\mathrm{N}=1$ (geometrized units).
 
 ## Basic info about the package
-The values of constants are taken based on reviews by Particle Data Group, [Physical Constants](https://pdg.lbl.gov/2024/reviews/rpp2024-rev-phys-constants.pdf) and [Astrophysical Constants and Parameters](https://pdg.lbl.gov/2024/reviews/rpp2024-rev-astrophysical-constants.pdf), and the wikipedia page [International System of Units](https://en.wikipedia.org/wiki/International_System_of_Units).
+The values of constants are taken based on [Particle Physics Booklet](https://pdg.lbl.gov/2024/download/db2024.pdf) by Particle Data Group and the wikipedia page [International System of Units](https://en.wikipedia.org/wiki/International_System_of_Units).
 
 The current list of named units incorporates the SI base units $\\{ \mathrm{s}, \mathrm{m}, \mathrm{kg}, \mathrm{A}, \mathrm{K} \\}$, their derived units, and some useful constants and parameters in physics and cosmology. The other two SI base units $\\{ \mathrm{mol}, \mathrm{cd} \\}$ and their derived units are not included for now.
 
