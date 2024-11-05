@@ -15,13 +15,13 @@ Print["Please consider citing ", Hyperlink["arXiv:123456", "https://github.com/h
 
 (* Public functions. *)
 SetNaturalUnit::usage = "
-SetNaturalUnit[DefiningConstants\[Rule]{c==1, \[HBar]==1, \[Epsilon]0==1, kB==1}, PreferredUnits\[Rule]{eV}] specifies the natural unit system for unit conversion.
-Default natural unit system is the one with defining constants c=\[HBar]=\[Epsilon]0=kB=1; and results will be preferably expressed in terms of eV. 
-If no defining constants or preferred units are desired, set DefiningConstant\[Rule]None or PreferredUnits\[Rule]None.
+SetNaturalUnit[DefiningConstants\[Rule]unitlist] specifies the natural unit system for unit conversion.
+For example, the default natural unit system is SetNaturalUnit[DefiningConstants\[Rule]{c==1, \[HBar]==1, \[Epsilon]0==1, kB==1}].
+Set DefiningConstants\[Rule]None if no defining constants are needed.
 ";
 
 NaturalUnitInfo::usage = "
-Information about the current natural unit system and preferred units.
+Print the defining constants for the current natural unit system.
 ";
 
 UnitList::usage "
@@ -29,12 +29,13 @@ List all named units.
 ";
 
 UC::usage = "
-UC[quantity] automatically converts the input quantity in the current natural unit system.
+UC[quantity] automatically converts the input quantity under the current natural unit system.
 UC[quantity, targetunit] converts the input quantity in terms of the target unit.
 ";
 
 
 (* Error messages. *)
+SetNaturalUnit::invalidconstant = "The defining constants `1` are not consistent.";
 UC::wrongunit = "The input quantity `1` and the target unit `2` are not compatible.";
 
 
@@ -275,33 +276,29 @@ $Units = Rationalize[#, 0]&/@$Units; (* Turn numerical values into exact numbers
 Begin["`Private`"];
 
 
+$UnitAssumptions = And@@Thread[Join[$BaseUnits, Keys[$Units]]>0];
+SimplifyUnit[x_] := Simplify[x, Assumptions->$UnitAssumptions];
+
+
 (* Set the natural unit system. *)
-$Assumptions = And@@Thread[Join[$BaseUnits, Keys[$Units]]>0];
 $DefiningConstants = {c==1, \[HBar]==1, \[Epsilon]0==1, kB==1}; (* Default natural system. *)
-$PreferredUnits = {eV}; (* Default preferred units for outputs. *)
 
 Unprotect[SetNaturalUnit];
-Options[SetNaturalUnit] = {DefiningConstants->$DefiningConstants, PreferredUnits->$PreferredUnits};
+Options[SetNaturalUnit] = {DefiningConstants->$DefiningConstants};
 SyntaxInformation[SetNaturalUnit] = {"ArgumentsPattern"->{OptionsPattern[]}};
 SetNaturalUnit[OptionsPattern[]] := 
 Block[{},
 	$DefiningConstants = OptionValue[DefiningConstants];
-	$PreferredUnits = OptionValue[PreferredUnits];
 	
 	(* Given a unit system, solve units in terms of the base units. *)
 	If[Head[$DefiningConstants]===List && Length@$DefiningConstants>=1,
-		$UnitReplace = Association@Solve[$DefiningConstants//.$Units, $BaseUnits[[;;Length@$DefiningConstants]]],
+		$UnitReplace = Association@Solve[$DefiningConstants//.$Units, $BaseUnits]//Quiet;
+		If[Length@$UnitReplace != Length@$DefiningConstants, Message[SetNaturalUnit::invalidconstant, $DefiningConstants]],
 		$UnitReplace = <||>
 	];
 	AssociateTo[$UnitReplace, $Units];
-	$UnitReplace = Map[Simplify, $UnitReplace//.$UnitReplace];
+	$UnitReplace = Map[SimplifyUnit, $UnitReplace//.$UnitReplace];
 	$UnitReplace = Map[N, $UnitReplace];
-	
-	(* Include powers of the preferred units from -8 to 8, which should be enough for most applications. *)
-	If[Head[$PreferredUnits]===List && Length@$PreferredUnits>=1,
-		$PreferredUnitsInternal = Flatten@Table[$PreferredUnits[[n]]^p, {n, 1, Length@$PreferredUnits}, {p, Join[Range[-8, -1], Range[1, 8]]}],
-		$PreferredUnitsInternal = None
-	]; 
 ];
 Protect[SetNaturalUnit];
 
@@ -309,38 +306,28 @@ SetNaturalUnit[]
 
 
 Unprotect[NaturalUnitInfo];
-NaturalUnitInfo[] := Print["Defining constants are ", $DefiningConstants, ", preferred units are ", $PreferredUnits, "."];
-Protect[NaturalUnitInfo]
+NaturalUnitInfo[] := Print["Defining constants for the current natural system are ", $DefiningConstants, "."];
+Protect[NaturalUnitInfo];
 
 
 Unprotect[UnitList];
 UnitList[] := Scan[Function[x, Print[x, ": ", x::usage]], Join[$BaseUnits, Keys@$Units]];
-Protect[UnitList]
+Protect[UnitList];
 
 
 Unprotect[UC];
 UC[x_, unit_] := 
-Block[{y},
-	y = x/unit //.$UnitReplace//N;
+Block[{y, unit1},
+	y = x/unit //.$UnitReplace//SimplifyUnit//N;
+	unit1 = unit //SimplifyUnit;
 	If[!NumericQ[y], Message[UC::wrongunit, x, unit]]; (* y should be dimensionless if units are compatible. *)
 	
 	(* Defer the unit if it contains numbers. *)
 	(* Precision is \[Infinity] if the input unit does not contain any multiplication numbers. *)
-	If[Precision[N[Rationalize[unit, 0]]]===\[Infinity], y unit, y Defer[Evaluate@Simplify[unit]]]
+	If[Precision[N[Rationalize[unit1, 0]]]===\[Infinity], y unit1, y Defer[Evaluate[unit //SimplifyUnit]]]
 ];
 
-UC[x_] := 
-Block[{yList, idx},
-	If[Head[$PreferredUnitsInternal]===List && Length@$PreferredUnitsInternal>=1,
-		(* If preferred units are given, try taking the best-matching unit. *)
-		yList = Map[Function[unit, x/unit //.$UnitReplace//N], $PreferredUnitsInternal] //Quiet;
-		idx = FirstPosition[NumericQ/@yList, True][[1]];
-		If[IntegerQ[idx], UC[x, $PreferredUnitsInternal[[idx]]], x/.$UnitReplace//N],
-		
-		(* If no preferred units are given, simplify the quantity. *)
-		x/.$UnitReplace//N
-	]
-];
+UC[x_] := x//.$UnitReplace//SimplifyUnit//N;
 Protect[UC];
 
 
