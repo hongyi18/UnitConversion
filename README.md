@@ -1,5 +1,6 @@
 # UnitConversion
-UnitConversion is a Mathematica package devoted to converting quantities between units in a specified unit system, including the natural units frequently used in the field of cosmology and high-energy physics. The default natural unit system is the one with $c=\hbar=k_\mathrm{B}=\varepsilon_0=1$ (i.e., with light speed, reduced Planck constant, Boltzmann constant, and vacuum permittivity being unity). Custom natural systems are supported.
+Natural unit systems are measurement systems with selected physical constants set to 1, a practice that has proven useful in physics research. The Mathematica package “UnitConversion” is designed for unit conversion within customizable
+ natural unit systems. The package includes predefined units and parameters commonly used in particle physics and cosmology, enabling efficient and flexible calculations across various physical systems. The default natural unit system is the one with $c=\hbar=\varepsilon_0=k_\mathrm{B}=1$ (light speed = reduced Planck constant = vacuum permittivity = Boltzmann constant = 1).
 
 ## Installation/update
 
@@ -20,7 +21,7 @@ To load the package, simply run
 **Note:** If the installation/update fails, please try again or check your internet connection by following the guide [Troubleshooting Internet Connectivity Problems](https://reference.wolfram.com/language/tutorial/TroubleshootingInternetConnectivity.html).
 
 ## Tutorial
-Please follow the Mathematica notebook [Get started on UnitConversion.nb](https://github.com/hongyi18/UnitConversion/blob/main/Get%20started%20on%20UnitConversion.nb) for a 3-minute tutorial.
+Please follow the Mathematica notebook [Get started on UnitConversion.nb](https://github.com/hongyi18/UnitConversion/blob/main/Get%20started%20on%20UnitConversion.nb) for a 3-minute tutorial. There is also useful information about customizing the package in the 2-page note [arXiv: ]().
 
 ## Cheatsheet
 - `Join[$BaseUnits, Keys@$Units]`: Print the full list of the symbols of named units.
@@ -34,7 +35,7 @@ Please follow the Mathematica notebook [Get started on UnitConversion.nb](https:
 ## Basic info about the package
 The values of constants are taken based on [Particle Physics Booklet](https://pdg.lbl.gov/2024/download/db2024.pdf) by Particle Data Group and the wikipedia page [International System of Units](https://en.wikipedia.org/wiki/International_System_of_Units).
 
-The current list of named units incorporates the SI base units $\\{ \mathrm{s}, \mathrm{m}, \mathrm{kg}, \mathrm{A}, \mathrm{K} \\}$, their derived units, and some useful constants and parameters in physics and cosmology. The other two SI base units $\\{ \mathrm{mol}, \mathrm{cd} \\}$ and their derived units are not included for now.
+Only named units and parameters are supported. The current list of named units include five SI base units $\\{ \mathrm{s}, \mathrm{m}, \mathrm{kg}, \mathrm{A}, \mathrm{K} \\}$, their derived units, and some useful constants and parameters in particle physics and cosmology. The other two SI base units $\\{ \mathrm{mol}, \mathrm{cd} \\}$ and their derived units are not supported yet.
 
 ## Contact
 If you find any bugs or would like to make suggestions for its improvement, please contact me via the email address displayed on [my website](https://hongyi18.github.io/).
