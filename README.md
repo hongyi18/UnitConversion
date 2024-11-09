@@ -21,7 +21,7 @@ To load the package, simply run
 **Note:** If the installation/update fails, please try again or check your internet connection by following the guide [Troubleshooting Internet Connectivity Problems](https://reference.wolfram.com/language/tutorial/TroubleshootingInternetConnectivity.html).
 
 ## Tutorial
-Please follow the Mathematica notebook [Get started on UnitConversion.nb](https://github.com/hongyi18/UnitConversion/blob/main/Get%20started%20on%20UnitConversion.nb) for a 3-minute tutorial. There is also useful information about customizing the package in the 2-page note [arXiv: ]().
+Please follow the Mathematica notebook [Get started on UnitConversion.nb](https://github.com/hongyi18/UnitConversion/blob/main/Get%20started%20on%20UnitConversion.nb) for a 3-minute tutorial. There is also useful information about customizing the package on [arXiv: ]().
 
 ## Cheatsheet
 - `Join[$BaseUnits, Keys@$Units]`: Print the full list of the symbols of named units.
