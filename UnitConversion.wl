@@ -10,6 +10,7 @@
 
 BeginPackage["UnitConversion`"];
 Print["UnitConversion 1.0 has been loaded."];
+Print["Please cite ", Hyperlink["zenodo:14086594", "https://zenodo.org/records/14086594"], " if you find this package helpful for your research."]
 
 
 (* Public functions. *)
