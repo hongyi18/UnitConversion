@@ -6,11 +6,10 @@
 (* Website: https://hongyi18.github.io *)
 (* Package Version: 1.0 *)
 (* Mathematica Version: 13.3.1 *)
-(* Date: Nov 4, 2024 *)
+(* Date: Nov 5, 2024 *)
 
 BeginPackage["UnitConversion`"];
 Print["UnitConversion 1.0 has been loaded."];
-Print["Please consider citing ", Hyperlink["arXiv:123456", "https://github.com/hongyi18/UnitConversion"], " if you find this package helpful for your research."]
 
 
 (* Public functions. *)
@@ -21,7 +20,7 @@ Set DefiningConstants\[Rule]None if no defining constants are needed.
 ";
 
 NaturalUnitInfo::usage = "
-Print the defining constants for the current natural unit system.
+Print the defining constants for the natural unit system in use.
 ";
 
 UnitList::usage "
@@ -29,7 +28,7 @@ List all named units.
 ";
 
 UC::usage = "
-UC[quantity] automatically converts the input quantity under the current natural unit system.
+UC[quantity] automatically converts the input quantity within the natural unit system in use.
 UC[quantity, targetunit] converts the input quantity in terms of the target unit.
 ";
 
@@ -51,7 +50,7 @@ kB::usage = "Boltzmann constant.";
 fs::usage = "Femtosecond."; (* Time. *)
 ns::usage = "Nanosecond.";
 \[Mu]s::usage = "Microsecond.";
-ms::usgae = "Millisecond.";
+ms::usage = "Millisecond.";
 s::usage = "Second."; 
 min::usage = "Minute.";
 hr::usage = "Hour.";
@@ -135,8 +134,12 @@ EP::usage = "Planck energy.";
 mProton::usage = "Proton mass.";
 mNeutron::usage = "Neutron mass.";
 mElectron::usage = "Electron mass.";
+mMuon::usage = "Muon mass.";
+mTau::usage = "Tau lepton mass.";
 mWBoson::usage = "W boson mass.";
 mZBoson::usage = "Z boson mass.";
+mHiggs::usage = "Higgs boson mass.";
+
 
 (* Astrophysical/cosmological quantities. *)
 MSun::usage = "Solar mass.";
@@ -251,8 +254,11 @@ EP -> Sqrt[\[HBar] c^5/GN],
 mProton -> 1.007276466621 u,
 mNeutron ->  1.00866491595 u,
 mElectron -> 0.51099895000 MeV/c^2,
+mMuon -> 105.6583755 MeV/c^2,
+mTau -> 1776.93 MeV/c^2,
 mWBoson -> 80.3692 GeV/c^2,
 mZBoson -> 91.1880 GeV/c^2,
+mHiggs -> 125.20 GeV/c^2,
 
 MSun -> 1.98841 10^33 g,
 MEarth -> 5.97217 10^27 g,
