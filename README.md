@@ -21,7 +21,7 @@ To load the package, simply run
 **Note:** If the installation/update fails, please try again or check your internet connection by following the guide [Troubleshooting Internet Connectivity Problems](https://reference.wolfram.com/language/tutorial/TroubleshootingInternetConnectivity.html).
 
 ## Documentation/tutorial
-Documentation can be found on [zenodo: 14086594](https://zenodo.org/records/14086594). A 3-minute line-by-line tutorial is available [here](https://github.com/hongyi18/UnitConversion/blob/main/Get%20started%20on%20UnitConversion.nb).
+Documentation can be found on [zenodo:14086594](https://zenodo.org/records/14086594). A 3-minute line-by-line tutorial is available [here](https://github.com/hongyi18/UnitConversion/blob/main/Get%20started%20on%20UnitConversion.nb).
 
 ## Cheatsheet
 - `Join[$BaseUnits, Keys@$Units]`: Print the full list of the symbols of named units.
