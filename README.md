@@ -1,6 +1,5 @@
 # UnitConversion
-Natural unit systems are measurement systems with selected physical constants set to 1, a practice that has proven useful in physics research. The Mathematica package “UnitConversion” is designed for unit conversion within customizable
- natural unit systems. The package includes predefined units and parameters commonly used in particle physics and cosmology, enabling efficient and flexible calculations across various physical systems. The default natural unit system is the one with $c=\hbar=\varepsilon_0=k_\mathrm{B}=1$ (light speed = reduced Planck constant = vacuum permittivity = Boltzmann constant = 1).
+UnitConversion is a Mathematica package designed for unit conversion within customizable natural unit systems. Natural unit systems are measurement systems with selected physical constants set to 1, a practice that has proven useful in physics research. The package includes predefined units and parameters commonly used in high-energy physics and cosmology, enabling efficient and flexible calculations across various physical systems. The default natural unit system is the one with $c=\hbar=\varepsilon_0=k_\mathrm{B}=1$ (light speed = reduced Planck constant = vacuum permittivity = Boltzmann constant = 1).
 
 ## Installation/update
 
