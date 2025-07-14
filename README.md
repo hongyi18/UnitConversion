@@ -1,4 +1,7 @@
 # UnitConversion
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14086594.svg)](https://doi.org/10.5281/zenodo.14086594)
+
 UnitConversion is a Mathematica package designed for unit conversion within customizable natural unit systems. Natural unit systems are measurement systems with selected physical constants set to 1, a practice that has proven useful in physics research. The package includes predefined units and parameters commonly used in high-energy physics and cosmology, enabling efficient and flexible calculations across various physical systems. The default natural unit system is the one with $c=\hbar=\varepsilon_0=k_\mathrm{B}=1$ (light speed = reduced Planck constant = vacuum permittivity = Boltzmann constant = 1).
 
 ## Installation/update
@@ -35,6 +38,9 @@ Documentation can be found on [zenodo:14086594](https://zenodo.org/records/14086
 The values of constants are taken based on [Particle Physics Booklet](https://pdg.lbl.gov/2024/download/db2024.pdf) by Particle Data Group and the wikipedia page [International System of Units](https://en.wikipedia.org/wiki/International_System_of_Units).
 
 Only named units and parameters are supported. The current list of named units include five SI base units $\\{ \mathrm{s}, \mathrm{m}, \mathrm{kg}, \mathrm{A}, \mathrm{K} \\}$, their derived units, and some useful constants and parameters in particle physics and cosmology. The other two SI base units $\\{ \mathrm{mol}, \mathrm{cd} \\}$ and their derived units are not supported yet.
+
+## Citation
+If you use this code as part of your research, please cite [zenodo:14086594](https://zenodo.org/records/14086594) in your work.
 
 ## Contact
 If you find any bugs or would like to make suggestions for its improvement, please contact me via the email address displayed on [my website](https://hongyi18.github.io/).
